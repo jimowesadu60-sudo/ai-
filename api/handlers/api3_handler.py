@@ -581,6 +581,81 @@ def _fill_storyboard_required_fields(
     base["one_line_concept"] = one_line_concept or script_title
 
 
+def _normalize_segment_groups(base: Dict[str, Any]) -> None:
+    shots = base.get("shots")
+    if not isinstance(shots, list) or len(shots) < 3:
+        return
+
+    ordered_shot_numbers: List[int] = []
+    for shot in shots:
+        if not isinstance(shot, dict):
+            return
+        shot_no = shot.get("shot_no")
+        if not isinstance(shot_no, int) or shot_no <= 0:
+            return
+        ordered_shot_numbers.append(shot_no)
+
+    expected = list(range(1, len(ordered_shot_numbers) + 1))
+    if ordered_shot_numbers != expected:
+        return
+
+    existing_groups = base.get("segment_groups")
+    existing_groups = existing_groups if isinstance(existing_groups, list) else []
+
+    total_shots = len(ordered_shot_numbers)
+
+    # 默认按 3 段切；如果原本就是 3~5 段，则优先保留段数
+    segment_count = 3
+    if 3 <= len(existing_groups) <= min(5, total_shots):
+        segment_count = len(existing_groups)
+
+    segment_count = min(segment_count, total_shots)
+
+    default_names = ["开头片段", "主体片段", "结尾片段", "补充片段4", "补充片段5"]
+
+    base_size = total_shots // segment_count
+    remainder = total_shots % segment_count
+
+    rebuilt_groups: List[Dict[str, Any]] = []
+    cursor = 1
+
+    for idx in range(segment_count):
+        length = base_size + (1 if idx < remainder else 0)
+        start_no = cursor
+        end_no = cursor + length - 1
+
+        source = (
+            existing_groups[idx]
+            if idx < len(existing_groups) and isinstance(existing_groups[idx], dict)
+            else {}
+        )
+
+        segment_name = _first_nonempty(source.get("segment_name"), default_names[idx])
+        segment_goal = _first_nonempty(
+            source.get("segment_goal"),
+            f"完成{segment_name}的内容推进",
+        )
+        segment_summary = _first_nonempty(
+            source.get("segment_summary"),
+            f"围绕{segment_name}完成该段内容展开",
+        )
+
+        rebuilt_groups.append(
+            {
+                "segment_id": f"segment_{idx + 1}",
+                "segment_name": segment_name,
+                "shot_range": f"镜头{start_no}-{end_no}" if start_no != end_no else f"镜头{start_no}",
+                "related_shot_numbers": list(range(start_no, end_no + 1)),
+                "segment_goal": segment_goal,
+                "segment_summary": segment_summary,
+            }
+        )
+
+        cursor = end_no + 1
+
+    base["segment_groups"] = rebuilt_groups
+
+
 def _validate_api3_output(
     data: Dict[str, Any],
     *,
@@ -687,6 +762,12 @@ async def run_api3(
         result2=result2,
         selected_option_id=selected_option_id,
     )
+
+    if isinstance(data.get("result3"), dict):
+        base = data["result3"].get("base_storyboard_script")
+        if isinstance(base, dict):
+            _normalize_segment_groups(base)
+
     _validate_api3_output(
         data,
         result1_inner=r1_inner,
