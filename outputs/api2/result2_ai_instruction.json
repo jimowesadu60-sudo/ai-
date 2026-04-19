@@ -1,0 +1,121 @@
+{
+  "result2": {
+    "schema_version": "v2.0",
+    "source_trace": {
+      "from_result1": true,
+      "generation_route": "ai_instruction"
+    },
+    "generation_route": "ai_instruction",
+    "based_on_edited_result1": true,
+    "platform_adaptation_summary": {
+      "target_platform": "抖音",
+      "platform_content_style": "快速、直接",
+      "platform_opening_preference": "快速钩子",
+      "platform_rhythm_preference": "紧凑节奏",
+      "platform_expression_note": "直接表达"
+    },
+    "global_constraints_summary": {
+      "core_expression": "分享办公室效率技巧",
+      "primary_goal": "提升完播",
+      "secondary_goal": "提升互动",
+      "duration_bucket": "30秒",
+      "primary_audience": "20-35岁职场人",
+      "primary_presentation_mode": "真人出镜",
+      "primary_narration_mode": "口播",
+      "material_status": "无素材",
+      "recommended_media_type": "真人实拍",
+      "main_style_note": "现代简洁",
+      "main_risks": [
+        "素材缺乏可能导致信息传达不充分"
+      ]
+    },
+    "options": [
+      {
+        "option_id": "A",
+        "card_title": "快速搭出基础版",
+        "card_summary": "先把开头、主体、结尾拆成独立片段，再逐段生成对应指令",
+        "highlight_tags": [
+          "开头主体分开做",
+          "对现成素材要求低",
+          "片段生成快"
+        ],
+        "selection_reason": "适合想先快速搭出一版，再慢慢补细节的用户",
+        "expansion_anchor": {
+          "opening_approach": "快速引入效率提升的问题",
+          "core_structure_path": [
+            "拆分开头片段",
+            "拆分主体片段",
+            "补充结尾片段"
+          ],
+          "ending_approach": "总结提升效率的小技巧",
+          "rhythm_style": "紧凑快速",
+          "visual_organization": "以独立片段生成",
+          "dialogue_tone": "轻松、亲切",
+          "material_usage_plan": "使用简单的场景示例",
+          "platform_fit_focus": "快速进入主题",
+          "media_fit_focus": "适合真人实拍",
+          "style_fit_focus": "简洁明了"
+        }
+      },
+      {
+        "option_id": "B",
+        "card_title": "按场景组织内容版",
+        "card_summary": "先理清办公室场景与关键镜头顺序，再按画面生成内容",
+        "highlight_tags": [
+          "先按场景分段",
+          "更适合补拍镜头",
+          "镜头顺序理清"
+        ],
+        "selection_reason": "适合想先把画面顺序理清楚，再生成内容的用户",
+        "expansion_anchor": {
+          "opening_approach": "展示办公室实际场景",
+          "core_structure_path": [
+            "确定关键场景",
+            "组织画面片段",
+            "补充口播与收束"
+          ],
+          "ending_approach": "总结场景中的效率技巧",
+          "rhythm_style": "稳中求快",
+          "visual_organization": "根据场景配置镜头",
+          "dialogue_tone": "自然、真实",
+          "material_usage_plan": "可补拍相关镜头",
+          "platform_fit_focus": "真实场景引起共鸣",
+          "media_fit_focus": "适合真人实拍",
+          "style_fit_focus": "生活化"
+        }
+      },
+      {
+        "option_id": "C",
+        "card_title": "统一风格完整版本",
+        "card_summary": "先确定整支视频的风格、节奏，最后统一生成各段指令",
+        "highlight_tags": [
+          "全片调性先统一",
+          "统一节奏再生成",
+          "片段风格更一致"
+        ],
+        "selection_reason": "适合想确保整支视频从头到尾风格更统一的用户",
+        "expansion_anchor": {
+          "opening_approach": "通过问题引导进入整体氛围",
+          "core_structure_path": [
+            "设定统一风格",
+            "分段生成内容",
+            "最终检查调性"
+          ],
+          "ending_approach": "强调全片节奏与风格的统一",
+          "rhythm_style": "节奏明快",
+          "visual_organization": "保持风格一致的镜头",
+          "dialogue_tone": "风格化、流畅",
+          "material_usage_plan": "依赖统一风格的象征性场景",
+          "platform_fit_focus": "保持轻松互动",
+          "media_fit_focus": "适合真人实拍",
+          "style_fit_focus": "统一风格"
+        }
+      }
+    ],
+    "selection_hint": {
+      "if_user_wants_fastest_grasp": "选择快速搭出基础版，能快速生成初步内容。",
+      "if_user_wants_clearest_delivery": "选择按场景组织内容版，能理清视觉内容。",
+      "if_user_wants_strongest_style_or_memory": "选择统一风格完整版本，能确保整体感。"
+    }
+  }
+}

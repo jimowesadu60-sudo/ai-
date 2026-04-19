@@ -1,0 +1,202 @@
+{
+  "result1": {
+    "schema_version": "v2.0",
+    "source_trace": {
+      "from_user_input": true,
+      "has_uploaded_images": false,
+      "inferred_fields": []
+    },
+    "input_digest": {
+      "topic": "咖啡厅学习的一天",
+      "target_platform": "小红书",
+      "duration_preference": "1~3min",
+      "target_audience": "泛用户",
+      "presentation_mode": "待确认",
+      "narration_mode": "待确认",
+      "user_goals": [
+        "建立人设"
+      ],
+      "extra_constraints": []
+    },
+    "core_decision": {
+      "core_expression": "记录咖啡厅中学习的独特体验，展示个人风格。",
+      "primary_goal": "建立人设",
+      "secondary_goal": "无明确次目标",
+      "content_angle_summary": "通过学习过程展现个性和生活态度。",
+      "primary_value_focus": "真实、亲切的学习氛围。",
+      "recommended_opening_direction": "引入个人在咖啡厅的第一印象和设置。"
+    },
+    "theme_analysis": {
+      "theme_core": "展示在咖啡厅学习的生活场景与体验。",
+      "primary_scene": "咖啡厅",
+      "primary_action": "学习、思考",
+      "key_elements": [
+        "咖啡",
+        "学习资料",
+        "环境气氛",
+        "个人状态",
+        "互动",
+        "时光记录"
+      ],
+      "possible_persona_traits": [
+        "文艺青年",
+        "学习爱好者",
+        "追求美好生活",
+        "分享者"
+      ],
+      "theme_signal_summary": "生活与学习的结合，展现积极向上的人生态度。"
+    },
+    "goal_semantics": {
+      "primary_goal_keywords": [
+        "个人标签",
+        "识别度",
+        "气质表现"
+      ],
+      "secondary_goal_keywords": [
+        "无明确次目标"
+      ],
+      "goal_expression_focus": "强调个体特色与学习的融合。",
+      "goal_to_theme_link": "通过展示在咖啡厅的学习时光，加强人设的认同感。"
+    },
+    "condition_semantics": {
+      "platform_semantics": "小红书强调真实感与生活分享，适合经验类内容。",
+      "duration_semantics": "1~3分钟快速表达，适合短小精悍的故事分享。",
+      "audience_semantics": "面向普通大众，需简单易懂且具吸引力。",
+      "presentation_semantics": "内容需真实且富有生活气息，更适合轻松表达。",
+      "narration_semantics": "口语化叙述，拉近与受众的距离感。",
+      "production_semantics": "需要注意拍摄的环境氛围与光线，保持自然感。",
+      "condition_to_execution_link": "所有条件结合，需建立真实生活的亲切氛围，增强用户共鸣。"
+    },
+    "platform_adaptation": {
+      "target_platform": "小红书",
+      "platform_content_style": "强调真实感、分享与推荐。",
+      "recommended_opening_style": "用生动的场景引入，吸引观众注意。",
+      "recommended_rhythm_style": "节奏适中，保持自然流畅。",
+      "recommended_expression_style": "语言应亲切且易懂，适合生活类分享。",
+      "platform_fit_reason": "符合小红书用户对分享与真实生活的期待。",
+      "platform_risk_note": "避免过度包装和造作，保持真实感。"
+    },
+    "audience_focus": {
+      "primary_audience": "年轻学习者",
+      "audience_mindset": "寻求灵感和真实经验。",
+      "audience_value_expectation": "希望感受到真实的学习氛围和生活乐趣。",
+      "communication_note": "需要提供可互动的内容，引发讨论与共鸣。"
+    },
+    "presentation_decision": {
+      "primary_presentation_mode": "待确认",
+      "presentation_reason": "待确认表达方式能够加强情感共鸣.",
+      "execution_note": "需保持自然流畅的表达，适应观众习惯。"
+    },
+    "narration_decision": {
+      "primary_narration_mode": "待确认",
+      "narration_reason": "适应灵活多变的场景叙述。",
+      "tone_direction": "轻松愉快，富有亲和力。"
+    },
+    "material_analysis": {
+      "material_status": "no_material",
+      "material_count_estimate": "0",
+      "material_types": [],
+      "available_elements": [],
+      "usable_shot_directions": [],
+      "supported_presentation_modes": [],
+      "supported_narration_modes": [],
+      "supported_content_directions": [],
+      "material_risks": [],
+      "material_gaps": [],
+      "material_usage_suggestion": "建议后续寻找相关学习和咖啡厅环境的素材。",
+      "material_indexed_list": [],
+      "inferred": true,
+      "confidence": "high"
+    },
+    "media_style_inference": {
+      "recommended_media_type": "真人实拍",
+      "confidence_level": "high",
+      "reasoning_summary": "真人实拍增强内容的真实感与共鸣。",
+      "visual_style": {
+        "primary_style": "生活化",
+        "secondary_style": "自然光影",
+        "style_summary": "真实呈现学习场景，突出个体情感。"
+      },
+      "prompt_dimension_profile": [
+        "镜头运动",
+        "光线氛围",
+        "角色动作节奏",
+        "场景背景",
+        "声音清晰度",
+        "构图层次"
+      ]
+    },
+    "execution_guidance": {
+      "recommended_structure_direction": "围绕学习的过程和心路历程展开。",
+      "material_usage_direction": "可考虑增加现场互动或心得分享。",
+      "execution_complexity": "简单，适合随拍随记录的模式。",
+      "must_keep_elements": [
+        "真实场景",
+        "学习资料",
+        "个人表达"
+      ],
+      "avoid_elements": [
+        "过度修饰",
+        "复杂背景"
+      ],
+      "risk_notes": [
+        "需注意保持真实感，避免制作精致到失真。"
+      ]
+    },
+    "risk_and_confirmation": {
+      "main_risk": "可能缺乏连贯性与吸引力。",
+      "needs_user_confirmation": [
+        "presentation_decision.primary_presentation_mode",
+        "narration_decision.primary_narration_mode"
+      ],
+      "weak_assumptions": []
+    },
+    "editable_fields": [
+      {
+        "field_path": "input_digest.target_platform",
+        "field_label": "目标平台",
+        "current_value": "小红书"
+      },
+      {
+        "field_path": "core_decision.primary_goal",
+        "field_label": "主目标",
+        "current_value": "建立人设"
+      },
+      {
+        "field_path": "core_decision.secondary_goal",
+        "field_label": "次目标",
+        "current_value": "无明确次目标"
+      },
+      {
+        "field_path": "audience_focus.primary_audience",
+        "field_label": "目标受众",
+        "current_value": "泛用户"
+      },
+      {
+        "field_path": "presentation_decision.primary_presentation_mode",
+        "field_label": "出镜方式",
+        "current_value": "待确认"
+      },
+      {
+        "field_path": "narration_decision.primary_narration_mode",
+        "field_label": "表达方式",
+        "current_value": "待确认"
+      },
+      {
+        "field_path": "media_style_inference.recommended_media_type",
+        "field_label": "媒介类型",
+        "current_value": "真人实拍"
+      },
+      {
+        "field_path": "media_style_inference.visual_style.primary_style",
+        "field_label": "视觉主风格",
+        "current_value": "生活化"
+      },
+      {
+        "field_path": "execution_guidance.recommended_structure_direction",
+        "field_label": "内容结构建议",
+        "current_value": "围绕学习的过程和心路历程展开"
+      }
+    ]
+  }
+}

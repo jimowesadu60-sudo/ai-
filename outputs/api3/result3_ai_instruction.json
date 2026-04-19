@@ -1,0 +1,192 @@
+{
+  "result3": {
+    "schema_version": "v2.0",
+    "source_trace": {
+      "from_result1": true,
+      "from_result2": true,
+      "selected_option_id": "A",
+      "generation_route": "ai_instruction"
+    },
+    "generation_route": "ai_instruction",
+    "selected_option_id": "A",
+    "selected_option_name": "快速搭出基础版",
+    "based_on_edited_result1": true,
+    "based_on_selected_option": true,
+    "base_storyboard_script": {
+      "script_title": "办公室提高效率的小技巧",
+      "one_line_concept": "分享实用的办公室效率技巧，帮助职场人提升工作效率。",
+      "target_platform": "抖音",
+      "total_duration": "30秒",
+      "recommended_media_type": "真人实拍",
+      "visual_style": {
+        "primary_style": "自然真实",
+        "secondary_style": "轻松活泼",
+        "style_summary": "保持真实与活泼的视觉表现。"
+      },
+      "prompt_dimension_profile": [
+        "镜头运动",
+        "人物状态",
+        "口播节奏",
+        "场景环境",
+        "光线氛围"
+      ],
+      "table_columns": [
+        "镜号",
+        "时间轴",
+        "画面描述",
+        "机位",
+        "摄法",
+        "景别",
+        "台词",
+        "音效"
+      ],
+      "shots": [
+        {
+          "shot_no": 1,
+          "timecode": "00:00-00:05",
+          "visual_description": "镜头对准办公室工位，展示忙碌的职场环境，背景有同事讨论的声音。",
+          "camera_position": "正面",
+          "shooting_method": "固定镜头",
+          "shot_size": "宽景",
+          "dialogue": "在跟大家分享如何提升办公室效率这件事情。",
+          "sound_effect": "背景轻声交谈"
+        },
+        {
+          "shot_no": 2,
+          "timecode": "00:05-00:15",
+          "visual_description": "近镜头展示一位年轻职场人使用番茄工作法的具体操作。",
+          "camera_position": "近景",
+          "shooting_method": "摇镜头",
+          "shot_size": "中景",
+          "dialogue": "首先，使用番茄工作法，每25分钟集中工作。",
+          "sound_effect": "轻环境声"
+        },
+        {
+          "shot_no": 3,
+          "timecode": "00:15-00:25",
+          "visual_description": "镜头切换至桌子上摆放的番茄定时器，画面轻轻晃动增添动感。",
+          "camera_position": "顶部视角",
+          "shooting_method": "推镜",
+          "shot_size": "特写",
+          "dialogue": "持续工作25分钟，之后休息5分钟，能有效提高工作效率。",
+          "sound_effect": "时钟滴答声"
+        },
+        {
+          "shot_no": 4,
+          "timecode": "00:25-00:30",
+          "visual_description": "最后一镜头展示全体职场员工面带微笑，轻松工作。",
+          "camera_position": "广角",
+          "shooting_method": "固定镜头",
+          "shot_size": "全景",
+          "dialogue": "让我们一起提高效率，享受工作！",
+          "sound_effect": "欢快音乐"
+        }
+      ],
+      "segment_groups": [
+        {
+          "segment_id": "segment_1",
+          "segment_name": "开头片段",
+          "shot_range": "镜头1",
+          "related_shot_numbers": [
+            1
+          ],
+          "segment_goal": "引起观众兴趣",
+          "segment_summary": "快速引出主题，展示忙碌的办公室情境。"
+        },
+        {
+          "segment_id": "segment_2",
+          "segment_name": "主体片段",
+          "shot_range": "镜头2-3",
+          "related_shot_numbers": [
+            2,
+            3
+          ],
+          "segment_goal": "传达具体工作技巧",
+          "segment_summary": "详细说明番茄工作法的操作方法和效果。"
+        },
+        {
+          "segment_id": "segment_3",
+          "segment_name": "结尾片段",
+          "shot_range": "镜头4",
+          "related_shot_numbers": [
+            4
+          ],
+          "segment_goal": "总结提升效率的技巧",
+          "segment_summary": "鼓励观众实践，提高工作效率。"
+        }
+      ]
+    },
+    "route_display_data": {
+      "display_type": "segmented_ai_instructions",
+      "page_title": "AI指令",
+      "page_subtitle": "",
+      "primary_source_binding": {
+        "segments_path": "base_storyboard_script.segment_groups",
+        "shots_path": "base_storyboard_script.shots"
+      },
+      "instruction_segments": [
+        {
+          "segment_id": "segment_1",
+          "segment_name": "开头片段",
+          "shot_range": "镜头1",
+          "related_shot_numbers": [
+            1
+          ],
+          "segment_goal": "引起观众兴趣",
+          "instruction_text": "真人实拍，抖音快速引入；主体为年轻职场人，真实办公室忙碌场景；镜头正面宽景固定，快速建立场景；动作自然，微笑开场；口播短句，直接说出‘在跟大家分享如何提升办公室效率这件事情。’；轻环境声，背景交谈声；整体节奏快，动态真实；避免冗长介绍。",
+          "spoken_lines": [
+            "在跟大家分享如何提升办公室效率这件事情。"
+          ],
+          "subtitle_focus": [
+            "提升办公室效率",
+            "工作环境"
+          ],
+          "copy_enabled": true
+        },
+        {
+          "segment_id": "segment_2",
+          "segment_name": "主体片段",
+          "shot_range": "镜头2-3",
+          "related_shot_numbers": [
+            2,
+            3
+          ],
+          "segment_goal": "传达具体工作技巧",
+          "instruction_text": "真人实拍，抖音直接进入技巧；展示年轻职场人在使用番茄工作法，具体动作清晰；镜头近景摇镜头，集中展示表情和操作；动作刚劲有力，专注工作；口播直接，讲解‘首先，使用番茄工作法，每25分钟集中工作。持续工作25分钟，之后休息5分钟，能有效提高工作效率。’；音效轻环境声，增加现场感；整体节奏快速，效率明确；避免繁琐解释。",
+          "spoken_lines": [
+            "首先，使用番茄工作法，每25分钟集中工作。",
+            "持续工作25分钟，之后休息5分钟，能有效提高工作效率。"
+          ],
+          "subtitle_focus": [
+            "番茄工作法",
+            "工作效率"
+          ],
+          "copy_enabled": true
+        },
+        {
+          "segment_id": "segment_3",
+          "segment_name": "结尾片段",
+          "shot_range": "镜头4",
+          "related_shot_numbers": [
+            4
+          ],
+          "segment_goal": "总结提升效率的技巧",
+          "instruction_text": "真人实拍，轻松总结；全景展示职场环境，氛围轻松愉快；镜头广角固定，展现全体职场人；动作轻松自然，员工面带微笑在工作；口播总结，‘让我们一起提高效率，享受工作！’；欢快音乐背景，营造气氛；整体节奏快速，积极鼓励；避免沮丧情绪。",
+          "spoken_lines": [
+            "让我们一起提高效率，享受工作！"
+          ],
+          "subtitle_focus": [
+            "提高效率",
+            "享受工作"
+          ],
+          "copy_enabled": true
+        }
+      ],
+      "full_instruction_package": {
+        "title": "完整版AI指令",
+        "full_instruction_text": "真人实拍，抖音快速引入；主体为年轻职场人，真实办公室忙碌场景；镜头正面宽景固定，快速建立场景；动作自然，微笑开场；口播短句，直接说出‘在跟大家分享如何提升办公室效率这件事情。’；轻环境声，背景交谈声；整体节奏快，动态真实；避免冗长介绍。真人实拍，抖音直接进入技巧；展示年轻职场人在使用番茄工作法，具体动作清晰；镜头近景摇镜头，集中展示表情和操作；动作刚劲有力，专注工作；口播直接，讲解‘首先，使用番茄工作法，每25分钟集中工作。持续工作25分钟，之后休息5分钟，能有效提高工作效率。’；音效轻环境声，增加现场感；整体节奏快速，效率明确；避免繁琐解释。真人实拍，轻松总结；全景展示职场环境，氛围轻松愉快；镜头广角固定，展现全体职场人；动作轻松自然，员工面带微笑在工作；口播总结，‘让我们一起提高效率，享受工作！’；欢快音乐背景，营造气氛；整体节奏快速，积极鼓励；避免沮丧情绪。",
+        "copy_enabled": true
+      }
+    }
+  }
+}

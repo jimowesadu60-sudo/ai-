@@ -1,0 +1,121 @@
+{
+  "result2": {
+    "schema_version": "v2.0",
+    "source_trace": {
+      "from_result1": true,
+      "generation_route": "pro_script"
+    },
+    "generation_route": "pro_script",
+    "based_on_edited_result1": true,
+    "platform_adaptation_summary": {
+      "target_platform": "抖音",
+      "platform_content_style": "快速、直接",
+      "platform_opening_preference": "快速钩子",
+      "platform_rhythm_preference": "紧凑节奏",
+      "platform_expression_note": "直接表达"
+    },
+    "global_constraints_summary": {
+      "core_expression": "分享办公室效率技巧",
+      "primary_goal": "提升完播",
+      "secondary_goal": "提升互动",
+      "duration_bucket": "30秒",
+      "primary_audience": "20-35岁职场人",
+      "primary_presentation_mode": "真人出镜",
+      "primary_narration_mode": "口播",
+      "material_status": "no_material",
+      "recommended_media_type": "真人实拍",
+      "main_style_note": "现代简洁",
+      "main_risks": [
+        "素材缺乏可能导致信息传达不充分"
+      ]
+    },
+    "options": [
+      {
+        "option_id": "A",
+        "card_title": "开头直接讲重点",
+        "card_summary": "视频一开始就抛出常见低效问题，接着迅速给出解决方法，确保让观众立即理解。",
+        "highlight_tags": [
+          "直接抛出问题",
+          "快速给出判断",
+          "节奏更快"
+        ],
+        "selection_reason": "适合想快速获取核心技巧的观众。",
+        "expansion_anchor": {
+          "opening_approach": "快速提及常见的低效问题",
+          "core_structure_path": [
+            "快速引入问题",
+            "给出解决方案",
+            "总结可执行建议"
+          ],
+          "ending_approach": "强调有效技巧的重要性",
+          "rhythm_style": "节奏紧凑，快速推进",
+          "visual_organization": "结合实拍场景与示范",
+          "dialogue_tone": "直接、告知式",
+          "material_usage_plan": "可使用简单的场景拍摄",
+          "platform_fit_focus": "快速吸引观众注意",
+          "media_fit_focus": "真人实拍，增强真实感",
+          "style_fit_focus": "现代简洁风格"
+        }
+      },
+      {
+        "option_id": "B",
+        "card_title": "拆开讲清楚方法",
+        "card_summary": "通过分步讲解，详细解释办公中的效率提升方法，使观众对每步过程都清晰易懂。",
+        "highlight_tags": [
+          "逐步讲解",
+          "强调方法",
+          "引导过程"
+        ],
+        "selection_reason": "适合希望深入了解每个技巧的观众。",
+        "expansion_anchor": {
+          "opening_approach": "引入一个常见效率低下的例子",
+          "core_structure_path": [
+            "介绍效率低下的实际情况",
+            "拆分具体方法",
+            "总结行动建议"
+          ],
+          "ending_approach": "鼓励观众尝试分享自己的反馈",
+          "rhythm_style": "适度递进，保持互动",
+          "visual_organization": "运用图示与实拍场景相结合",
+          "dialogue_tone": "轻松、亲切",
+          "material_usage_plan": "可以适度补充实际场景素材",
+          "platform_fit_focus": "注重过程分享与互动",
+          "media_fit_focus": "真人实拍与动画结合",
+          "style_fit_focus": "亲切自然风格"
+        }
+      },
+      {
+        "option_id": "C",
+        "card_title": "用对比强化记忆",
+        "card_summary": "通过前后对比，展示效率提升前后的差异，让观众深刻记住方法的效果。",
+        "highlight_tags": [
+          "前后对比",
+          "强化记忆点",
+          "风格感强"
+        ],
+        "selection_reason": "适合希望通过直观对比强化记忆的观众。",
+        "expansion_anchor": {
+          "opening_approach": "以对比初始状态与改善后的情况引入",
+          "core_structure_path": [
+            "展示低效状态",
+            "引入改善方法",
+            "总结比较结果"
+          ],
+          "ending_approach": "回归到提问，增强观众的思考",
+          "rhythm_style": "动态、多样化的节奏",
+          "visual_organization": "强烈对比画面，突出差异",
+          "dialogue_tone": "生动活泼，带有情感触动",
+          "material_usage_plan": "使用对比画面和实拍素材",
+          "platform_fit_focus": "增强直观效果，用数据或实例对比",
+          "media_fit_focus": "真人实拍，配合标题和文字信息",
+          "style_fit_focus": "直观鲜明风格"
+        }
+      }
+    ],
+    "selection_hint": {
+      "if_user_wants_fastest_grasp": "选择A，快速获取实用技巧。",
+      "if_user_wants_clearest_delivery": "选择B，深入了解每个步骤的细节。",
+      "if_user_wants_strongest_style_or_memory": "选择C，通过对比让内容更紧扣记忆。"
+    }
+  }
+}

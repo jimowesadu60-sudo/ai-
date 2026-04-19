@@ -1,0 +1,167 @@
+{
+  "result3": {
+    "schema_version": "v2.0",
+    "source_trace": {
+      "from_result1": true,
+      "from_result2": true,
+      "selected_option_id": "A",
+      "generation_route": "pro_script"
+    },
+    "generation_route": "pro_script",
+    "selected_option_id": "A",
+    "selected_option_name": "开头直接讲重点",
+    "based_on_edited_result1": true,
+    "based_on_selected_option": true,
+    "base_storyboard_script": {
+      "script_title": "办公室提高效率的小技巧",
+      "one_line_concept": "分享在办公室内快速提高效率的实用技巧",
+      "target_platform": "抖音",
+      "total_duration": "30秒",
+      "recommended_media_type": "真人实拍",
+      "visual_style": {
+        "primary_style": "现代简洁",
+        "secondary_style": "自然真实",
+        "style_summary": "展现真实办公环境与高效动作"
+      },
+      "prompt_dimension_profile": [
+        "人物状态",
+        "场景环境",
+        "机位",
+        "表演状态"
+      ],
+      "table_columns": [
+        "镜号",
+        "时间轴",
+        "画面描述",
+        "机位",
+        "摄法",
+        "景别",
+        "台词",
+        "音效"
+      ],
+      "shots": [
+        {
+          "shot_no": 1,
+          "timecode": "00:00-00:02",
+          "visual_description": "视频开头，职场人士面前堆满文件，看起来焦虑不安。",
+          "camera_position": "正面",
+          "shooting_method": "固定拍摄",
+          "shot_size": "中景",
+          "dialogue": "你是否也有过在办公室工作效率低下的经历？",
+          "sound_effect": "轻环境声"
+        },
+        {
+          "shot_no": 2,
+          "timecode": "00:02-00:10",
+          "visual_description": "镜头快速转到一位职场人士微笑，指着一份清单，背景是整齐的办公桌。",
+          "camera_position": "侧面",
+          "shooting_method": "轻摇晃拍摄",
+          "shot_size": "近景",
+          "dialogue": "今天，我给大家分享三个小技巧，帮助你提高工作效率！",
+          "sound_effect": "轻快背景音乐"
+        },
+        {
+          "shot_no": 3,
+          "timecode": "00:10-00:20",
+          "visual_description": "镜头转换为提示文字，展示第一个技巧：合理安排工作时间。",
+          "camera_position": "正面",
+          "shooting_method": "静态图文展示",
+          "shot_size": "大特写",
+          "dialogue": "第一个技巧是合理安排工作时间，避免无效加班。",
+          "sound_effect": "轻环境声"
+        },
+        {
+          "shot_no": 4,
+          "timecode": "00:20-00:30",
+          "visual_description": "结束镜头，职场人士再次微笑，背景显示他们高效工作。",
+          "camera_position": "正面",
+          "shooting_method": "渐变推拉",
+          "shot_size": "中景",
+          "dialogue": "试试看这些方法，让你的办公时间利用得更高效！",
+          "sound_effect": "轻快背景音乐"
+        }
+      ],
+      "segment_groups": [
+        {
+          "segment_id": "segment_1",
+          "segment_name": "开头片段",
+          "shot_range": "镜头1-2",
+          "related_shot_numbers": [
+            1,
+            2
+          ],
+          "segment_goal": "引起观众兴趣，快速切入主题",
+          "segment_summary": "通过引发共鸣和给出解决方案，吸引观众继续观看。"
+        },
+        {
+          "segment_id": "segment_2",
+          "segment_name": "主体片段",
+          "shot_range": "镜头3",
+          "related_shot_numbers": [
+            3
+          ],
+          "segment_goal": "传达具体技巧，提供实用建议",
+          "segment_summary": "以简洁的语言分享有效的工作技巧，增强观众接受度。"
+        },
+        {
+          "segment_id": "segment_3",
+          "segment_name": "结尾片段",
+          "shot_range": "镜头4",
+          "related_shot_numbers": [
+            4
+          ],
+          "segment_goal": "总结提升效率的建议，鼓励实践",
+          "segment_summary": "通过亲切的结束语增强观众的印象，提高转发意愿。"
+        }
+      ]
+    },
+    "route_display_data": {
+      "display_type": "storyboard_table",
+      "page_title": "专业脚本",
+      "page_subtitle": "",
+      "primary_data_binding": {
+        "table_columns_path": "base_storyboard_script.table_columns",
+        "table_rows_path": "base_storyboard_script.shots"
+      },
+      "table_presentation": {
+        "table_name": "办公室提高效率的小技巧",
+        "default_view_mode": "table",
+        "show_full_table_directly": true,
+        "column_order": [
+          "镜号",
+          "时间轴",
+          "画面描述",
+          "机位",
+          "摄法",
+          "景别",
+          "台词",
+          "音效"
+        ]
+      },
+      "editing_config": {
+        "editable": true,
+        "edit_entry": "one_click_edit",
+        "editable_scope": "all_cells",
+        "editable_fields": [
+          "shot_no",
+          "timecode",
+          "visual_description",
+          "camera_position",
+          "shooting_method",
+          "shot_size",
+          "dialogue",
+          "sound_effect"
+        ]
+      },
+      "export_config": {
+        "export_enabled": true,
+        "supported_formats": [
+          "jpg",
+          "pdf",
+          "excel"
+        ],
+        "default_file_name": "办公室提高效率小技巧"
+      }
+    }
+  }
+}
