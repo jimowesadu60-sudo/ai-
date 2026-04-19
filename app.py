@@ -30,6 +30,7 @@ app.add_middleware(
         "http://127.0.0.1:3003",
         "http://127.0.0.1:5173",
         "http://localhost:5173",
+        "https://ouye2.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
