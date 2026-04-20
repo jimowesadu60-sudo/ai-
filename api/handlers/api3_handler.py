@@ -656,6 +656,73 @@ def _normalize_segment_groups(base: Dict[str, Any]) -> None:
     base["segment_groups"] = rebuilt_groups
 
 
+def _sync_ai_instruction_display_from_base(base: Dict[str, Any], display: Any) -> None:
+    if not isinstance(display, dict):
+        return
+    if display.get("display_type") != "segmented_ai_instructions":
+        return
+
+    segment_groups = base.get("segment_groups")
+    if not isinstance(segment_groups, list) or not segment_groups:
+        return
+
+    cards = display.get("instruction_segments")
+    cards = cards if isinstance(cards, list) else []
+
+    rebuilt_cards: List[Dict[str, Any]] = []
+
+    for idx, segment in enumerate(segment_groups):
+        if not isinstance(segment, dict):
+            return
+
+        old_card = cards[idx] if idx < len(cards) and isinstance(cards[idx], dict) else {}
+
+        instruction_text = _first_nonempty(
+            old_card.get("instruction_text"),
+            f"请围绕{segment.get('segment_name', f'片段{idx + 1}')}生成对应AI指令，突出该片段重点画面、节奏、表达方式与字幕信息。",
+        )
+
+        spoken_lines = old_card.get("spoken_lines")
+        if not isinstance(spoken_lines, list) or not spoken_lines or any(
+            not isinstance(x, str) or not x.strip() for x in spoken_lines
+        ):
+            spoken_lines = ["无口播，以字幕呈现"] if "无台词" in str(segment.get("segment_goal", "")) else ["请根据片段内容组织口播/字幕重点"]
+
+        subtitle_focus = old_card.get("subtitle_focus")
+        if not isinstance(subtitle_focus, list) or not subtitle_focus or any(
+            not isinstance(x, str) or not x.strip() for x in subtitle_focus
+        ):
+            subtitle_focus = [segment.get("segment_name", f"片段{idx + 1}")]
+
+        rebuilt_cards.append(
+            {
+                "segment_id": segment.get("segment_id", f"segment_{idx + 1}"),
+                "segment_name": segment.get("segment_name", f"片段{idx + 1}"),
+                "shot_range": segment.get("shot_range", ""),
+                "related_shot_numbers": segment.get("related_shot_numbers", []),
+                "segment_goal": segment.get("segment_goal", ""),
+                "instruction_text": instruction_text,
+                "spoken_lines": spoken_lines,
+                "subtitle_focus": subtitle_focus[:3],
+                "copy_enabled": True,
+            }
+        )
+
+    display["instruction_segments"] = rebuilt_cards
+
+    full_pkg = display.get("full_instruction_package")
+    if not isinstance(full_pkg, dict):
+        full_pkg = {}
+
+    full_pkg["title"] = _first_nonempty(full_pkg.get("title"), "完整版AI指令")
+    full_pkg["full_instruction_text"] = _first_nonempty(
+        full_pkg.get("full_instruction_text"),
+        "\n\n".join(card["instruction_text"] for card in rebuilt_cards if isinstance(card.get("instruction_text"), str)),
+    )
+    full_pkg["copy_enabled"] = True
+    display["full_instruction_package"] = full_pkg
+
+
 def _validate_api3_output(
     data: Dict[str, Any],
     *,
@@ -767,6 +834,12 @@ async def run_api3(
         base = data["result3"].get("base_storyboard_script")
         if isinstance(base, dict):
             _normalize_segment_groups(base)
+
+            if data["result3"].get("generation_route") == "ai_instruction":
+                _sync_ai_instruction_display_from_base(
+                    base,
+                    data["result3"].get("route_display_data"),
+                )
 
     _validate_api3_output(
         data,
