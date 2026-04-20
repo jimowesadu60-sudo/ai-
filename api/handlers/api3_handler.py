@@ -529,6 +529,20 @@ def _first_nonempty(*values: object) -> str:
     return ""
 
 
+def _resolve_user_narration_mode(result1: Dict[str, Any]) -> str:
+    r1 = result1.get("result1", {}) if isinstance(result1, dict) else {}
+    input_digest = r1.get("input_digest", {}) if isinstance(r1.get("input_digest"), dict) else {}
+
+    return _first_nonempty(
+        input_digest.get("narration_mode"),
+        input_digest.get("primary_narration_mode"),
+    )
+
+
+def _is_explicit_subtitle_music(result1: Dict[str, Any]) -> bool:
+    return _resolve_user_narration_mode(result1) == "纯字幕+音乐"
+
+
 def _fill_storyboard_required_fields(
     data: dict,
     *,
@@ -656,7 +670,55 @@ def _normalize_segment_groups(base: Dict[str, Any]) -> None:
     base["segment_groups"] = rebuilt_groups
 
 
-def _sync_ai_instruction_display_from_base(base: Dict[str, Any], display: Any) -> None:
+def _normalize_dialogue_policy(base: Dict[str, Any], *, subtitle_only: bool) -> None:
+    shots = base.get("shots")
+    if not isinstance(shots, list):
+        return
+
+    segment_groups = base.get("segment_groups")
+    segment_groups = segment_groups if isinstance(segment_groups, list) else []
+
+    def find_segment_summary(shot_no: int) -> str:
+        for segment in segment_groups:
+            if not isinstance(segment, dict):
+                continue
+            related = segment.get("related_shot_numbers")
+            if isinstance(related, list) and shot_no in related:
+                return _first_nonempty(
+                    segment.get("segment_summary"),
+                    segment.get("segment_goal"),
+                    segment.get("segment_name"),
+                )
+        return _first_nonempty(base.get("one_line_concept"), base.get("script_title"))
+
+    for idx, shot in enumerate(shots):
+        if not isinstance(shot, dict):
+            continue
+
+        dialogue = str(shot.get("dialogue", "")).strip()
+        shot_no = shot.get("shot_no") if isinstance(shot.get("shot_no"), int) else idx + 1
+
+        if subtitle_only:
+            shot["dialogue"] = "无台词，以字幕呈现"
+            continue
+
+        if (not dialogue) or ("无台词" in dialogue) or ("以字幕呈现" in dialogue):
+            summary = find_segment_summary(shot_no)
+
+            if idx == 0:
+                shot["dialogue"] = f"先自然带出主题：{summary}"
+            elif idx == len(shots) - 1:
+                shot["dialogue"] = f"最后收回重点，落到这段内容的核心感受：{summary}"
+            else:
+                shot["dialogue"] = f"继续补充真实细节，用自然口吻讲清这一段重点：{summary}"
+
+
+def _sync_ai_instruction_display_from_base(
+    base: Dict[str, Any],
+    display: Any,
+    *,
+    subtitle_only: bool,
+) -> None:
     if not isinstance(display, dict):
         return
     if display.get("display_type") != "segmented_ai_instructions":
@@ -677,16 +739,57 @@ def _sync_ai_instruction_display_from_base(base: Dict[str, Any], display: Any) -
 
         old_card = cards[idx] if idx < len(cards) and isinstance(cards[idx], dict) else {}
 
-        instruction_text = _first_nonempty(
-            old_card.get("instruction_text"),
-            f"请围绕{segment.get('segment_name', f'片段{idx + 1}')}生成对应AI指令，突出该片段重点画面、节奏、表达方式与字幕信息。",
-        )
+        old_instruction_text = _first_nonempty(old_card.get("instruction_text"))
 
         spoken_lines = old_card.get("spoken_lines")
-        if not isinstance(spoken_lines, list) or not spoken_lines or any(
-            not isinstance(x, str) or not x.strip() for x in spoken_lines
-        ):
-            spoken_lines = ["无口播，以字幕呈现"] if "无台词" in str(segment.get("segment_goal", "")) else ["请根据片段内容组织口播/字幕重点"]
+
+        if subtitle_only:
+            spoken_lines = ["无口播，以字幕呈现"]
+        else:
+            base_shots = base.get("shots", [])
+            related_numbers = segment.get("related_shot_numbers", [])
+            collected_lines: List[str] = []
+
+            if isinstance(base_shots, list):
+                for shot in base_shots:
+                    if not isinstance(shot, dict):
+                        continue
+                    shot_no = shot.get("shot_no")
+                    dialogue = str(shot.get("dialogue", "")).strip()
+                    if (
+                        isinstance(shot_no, int)
+                        and shot_no in related_numbers
+                        and dialogue
+                        and "无台词" not in dialogue
+                        and "以字幕呈现" not in dialogue
+                    ):
+                        collected_lines.append(dialogue)
+
+            if collected_lines:
+                spoken_lines = collected_lines[:3]
+            else:
+                spoken_lines = [
+                    f"请用自然口吻讲清这段重点：{segment.get('segment_summary', segment.get('segment_goal', ''))}"
+                ]
+
+        if subtitle_only:
+            instruction_text = _first_nonempty(
+                old_instruction_text,
+                f"请围绕{segment.get('segment_name', f'片段{idx + 1}')}生成对应AI指令，突出该片段重点画面、节奏、字幕信息与氛围表达。",
+            )
+        else:
+            if ("无口播" in old_instruction_text) or ("以字幕呈现" in old_instruction_text) or ("纯字幕" in old_instruction_text):
+                spoken_summary = "；".join(spoken_lines[:2])
+                instruction_text = (
+                    f"请围绕{segment.get('segment_name', f'片段{idx + 1}')}（{segment.get('shot_range', '')}）"
+                    f"组织可直接执行的AI指令，重点突出该片段的画面推进、人物状态、环境细节与自然口播表达。"
+                    f"口播重点：{spoken_summary}。字幕只做辅助强调，不要生成纯字幕+音乐版本。"
+                )
+            else:
+                instruction_text = _first_nonempty(
+                    old_instruction_text,
+                    f"请围绕{segment.get('segment_name', f'片段{idx + 1}')}生成对应AI指令，突出该片段重点画面、节奏、口播与字幕配合。",
+                )
 
         subtitle_focus = old_card.get("subtitle_focus")
         if not isinstance(subtitle_focus, list) or not subtitle_focus or any(
@@ -829,16 +932,19 @@ async def run_api3(
         result2=result2,
         selected_option_id=selected_option_id,
     )
+    subtitle_only = _is_explicit_subtitle_music(result1)
 
     if isinstance(data.get("result3"), dict):
         base = data["result3"].get("base_storyboard_script")
         if isinstance(base, dict):
             _normalize_segment_groups(base)
+            _normalize_dialogue_policy(base, subtitle_only=subtitle_only)
 
             if data["result3"].get("generation_route") == "ai_instruction":
                 _sync_ai_instruction_display_from_base(
                     base,
                     data["result3"].get("route_display_data"),
+                    subtitle_only=subtitle_only,
                 )
 
     _validate_api3_output(
